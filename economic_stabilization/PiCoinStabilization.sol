@@ -5,15 +5,14 @@ contract PiCoinStabilization {
     string public name = "Pi Coin";
     string public symbol = "PI";
     uint8 public decimals = 18;
-    uint256 public totalSupply;
+    uint256 public totalSupply = 100000000000 * 10 ** uint256(decimals); // Fixed total supply
     uint256 public pegValue = 314159 * 10 ** uint256(decimals); // Pegged value in wei
     mapping(address => uint256) public balanceOf;
 
     event Transfer(address indexed from, address indexed to, uint256 value);
     event PegAdjusted(uint256 newPegValue);
 
-    constructor(uint256 initialSupply) {
-        totalSupply = initialSupply * 10 ** uint256(decimals);
+    constructor() {
         balanceOf[msg.sender] = totalSupply; // Assign all tokens to the contract creator
     }
 
