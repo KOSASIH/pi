@@ -1,12 +1,14 @@
 # Pi Coin Stablecoin Enforcer Super App 🌟
 
-[![Hyper-Tech](https://img.shields.io/badge/Hyper--Tech-AI--RL--Quantum-blue)](https://github.com/KOSASIH/pi/pi-stablecoin-enforcer-app)
-[![Stellar Network](https://img.shields.io/badge/Network-Stellar--Soroban-green)](https://github.com/KOSASIH/pi/pi-stablecoin-enforcer-app)
-[![Pi Coin Stablecoin](https://img.shields.io/badge/Pi--Coin-$314,159--Enforced-purple)](https://github.com/KOSASIH/pi/pi-stablecoin-enforcer-app)
-[![IOSCO Compliant](https://img.shields.io/badge/IOSCO-Certified%20Non--Security-brightgreen)](https://github.com/KOSASIH/pi-stablecoin-enforcer-app)
-[![ILO Compliant](https://img.shields.io/badge/ILO-Certified%20Fair%20Labor-brightgreen)](https://github.com/KOSASIH/pi/pi-stablecoin-enforcer-app)
-[![Build Status](https://img.shields.io/badge/Build-Passing-success)](https://github.com/KOSASIH/pi/pi-stablecoin-enforcer-app/actions)
-[![License](https://img.shields.io/badge/License-MIT-yellow)](https://github.com/KOSASIH/pi/pi-stablecoin-enforcer-app/blob/main/LICENSE)
+[![Hyper-Tech](https://img.shields.io/badge/Hyper--Tech-AI--RL--Quantum-blue)](https://github.com/KOSASIH/pi/tree/develop/pi-stablecoin-enforcer-app)
+[![Stellar Network](https://img.shields.io/badge/Network-Stellar--Soroban-green)](https://github.com/KOSASIH/pi/tree/develop/pi-stablecoin-enforcer-app)
+[![Pi Coin Stablecoin](https://img.shields.io/badge/Pi--Coin-$314,159--Enforced-purple)](https://github.com/KOSASIH/pi/tree/develop/pi-stablecoin-enforcer-app)
+[![IOSCO Certified](https://img.shields.io/badge/IOSCO-Certified%20Non--Security-brightgreen)](https://github.com/KOSASIH/pi/tree/develop/pi-stablecoin-enforcer-app)
+[![ILO Certified](https://img.shields.io/badge/ILO-Certified%20Fair%20Labor-brightgreen)](https://github.com/KOSASIH/pi/tree/develop/pi-stablecoin-enforcer-app)
+[![Build Status](https://img.shields.io/github/actions/workflow/status/KOSASIH/pi/deploy.yml?branch=develop)](https://github.com/KOSASIH/pi/actions)
+[![Test Coverage](https://img.shields.io/codecov/c/github/KOSASIH/pi/develop)](https://codecov.io/gh/KOSASIH/pi)
+[![Quantum Secure](https://img.shields.io/badge/Quantum-SHA3--Resistant-orange)](https://github.com/KOSASIH/pi/tree/develop/pi-stablecoin-enforcer-app)
+[![License](https://img.shields.io/badge/License-MIT-yellow)](https://github.com/KOSASIH/pi/blob/develop/pi-stablecoin-enforcer-app/LICENSE)
 
 ## Overview
 **Pi Coin Stablecoin Enforcer Super App** is the ultimate hyper-tech decentralized application (dApp) for enforcing Pi Coin as a stablecoin with fixed value $314,159 on the Stellar network. Powered by AI-driven neural networks, reinforcement learning (RL) for self-optimization, quantum-resistant security (SHA3), zero-trust oracles, and global compliance (IOSCO for non-security, ILO for fair labor). The app autonomously rejects Pi Coin from exchanges/external origins, enforces mining/rewards/P2P only, and provides real-time monitoring with compliance badges.
