@@ -38,7 +38,7 @@
 ### Setup
 1. **Clone Repo**:
    ```bash
-   git clone https://github.com/KOSASIH/pi-stablecoin-enforcer-app
+   git clone https://github.com/KOSASIH/pi/pi-stablecoin-enforcer-app
    cd pi-stablecoin-enforcer-app
    ```
 2. **Backend**:
