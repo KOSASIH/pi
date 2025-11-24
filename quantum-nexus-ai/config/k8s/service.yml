@@ -1,0 +1,180 @@
+# Quantum Nexus AI Kubernetes Services - Ultimate Hyper-Tech Exposure and Load Balancing
+# This manifest defines services for exposing deployments, enabling external access, load balancing, and inter-service communication in the hyper-tech platform.
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: quantum-nexus-api-service
+  namespace: quantum-nexus
+  labels:
+    app: quantum-nexus
+    component: api
+spec:
+  selector:
+    app: quantum-nexus
+    component: api
+  ports:
+  - name: http
+    port: 80
+    targetPort: 8000
+    protocol: TCP
+  - name: websocket
+    port: 8080
+    targetPort: 8080  # For WebSocket streaming
+    protocol: TCP
+  type: LoadBalancer  # External load balancer for public access
+  sessionAffinity: ClientIP  # Sticky sessions for stateful interactions
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: quantum-sim-service
+  namespace: quantum-nexus
+  labels:
+    app: quantum-nexus
+    component: quantum
+spec:
+  selector:
+    app: quantum-nexus
+    component: quantum
+  ports:
+  - name: sim-port
+    port: 5000
+    targetPort: 5000
+    protocol: TCP
+  type: ClusterIP  # Internal only, accessed via API
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: swarm-ai-service
+  namespace: quantum-nexus
+  labels:
+    app: quantum-nexus
+    component: swarm
+spec:
+  selector:
+    app: quantum-nexus
+    component: swarm
+  ports:
+  - name: swarm-port
+    port: 6000
+    targetPort: 6000
+    protocol: TCP
+  type: ClusterIP
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: iot-mqtt-service
+  namespace: quantum-nexus
+  labels:
+    app: quantum-nexus
+    component: iot
+spec:
+  selector:
+    app: eclipse-mosquitto  # From docker-compose
+  ports:
+  - name: mqtt
+    port: 1883
+    targetPort: 1883
+    protocol: TCP
+  - name: mqtt-ws
+    port: 9001
+    targetPort: 9001
+    protocol: TCP
+  type: ClusterIP
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: blockchain-sim-service
+  namespace: quantum-nexus
+  labels:
+    app: quantum-nexus
+    component: blockchain
+spec:
+  selector:
+    app: trufflesuite/ganache-cli  # From docker-compose
+  ports:
+  - name: rpc
+    port: 8545
+    targetPort: 8545
+    protocol: TCP
+  type: ClusterIP
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: monitoring-service
+  namespace: quantum-nexus
+  labels:
+    app: quantum-nexus
+    component: monitoring
+spec:
+  selector:
+    app: prom/prometheus
+  ports:
+  - name: prometheus
+    port: 9090
+    targetPort: 9090
+    protocol: TCP
+  type: ClusterIP
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: grafana-service
+  namespace: quantum-nexus
+  labels:
+    app: quantum-nexus
+    component: grafana
+spec:
+  selector:
+    app: grafana/grafana
+  ports:
+  - name: grafana
+    port: 3000
+    targetPort: 3000
+    protocol: TCP
+  type: LoadBalancer
+
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: quantum-nexus-ingress
+  namespace: quantum-nexus
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+    cert-manager.io/cluster-issuer: "letsencrypt-prod"  # For SSL
+spec:
+  ingressClassName: nginx
+  tls:
+  - hosts:
+    - quantum-nexus.example.com
+    secretName: quantum-nexus-tls
+  rules:
+  - host: quantum-nexus.example.com
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: quantum-nexus-api-service
+            port:
+              number: 80
+      - path: /grafana
+        pathType: Prefix
+        backend:
+          service:
+            name: grafana-service
+            port:
+              number: 3000
