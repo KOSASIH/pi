@@ -1,12 +1,12 @@
 # Pi Coin Stablecoin Enforcer Super App 🌟
 
-[![Hyper-Tech](https://img.shields.io/badge/Hyper--Tech-AI--RL--Quantum-blue)](https://github.com/KOSASIH/pi-stablecoin-enforcer-app)
-[![Stellar Network](https://img.shields.io/badge/Network-Stellar--Soroban-green)](https://github.com/KOSASIH/pi-stablecoin-enforcer-app)
-[![Pi Coin Stablecoin](https://img.shields.io/badge/Pi--Coin-$314,159--Enforced-purple)](https://github.com/KOSASIH/pi-stablecoin-enforcer-app)
+[![Hyper-Tech](https://img.shields.io/badge/Hyper--Tech-AI--RL--Quantum-blue)](https://github.com/KOSASIH/pi/pi-stablecoin-enforcer-app)
+[![Stellar Network](https://img.shields.io/badge/Network-Stellar--Soroban-green)](https://github.com/KOSASIH/pi/pi-stablecoin-enforcer-app)
+[![Pi Coin Stablecoin](https://img.shields.io/badge/Pi--Coin-$314,159--Enforced-purple)](https://github.com/KOSASIH/pi/pi-stablecoin-enforcer-app)
 [![IOSCO Compliant](https://img.shields.io/badge/IOSCO-Certified%20Non--Security-brightgreen)](https://github.com/KOSASIH/pi-stablecoin-enforcer-app)
-[![ILO Compliant](https://img.shields.io/badge/ILO-Certified%20Fair%20Labor-brightgreen)](https://github.com/KOSASIH/pi-stablecoin-enforcer-app)
-[![Build Status](https://img.shields.io/badge/Build-Passing-success)](https://github.com/KOSASIH/pi-stablecoin-enforcer-app/actions)
-[![License](https://img.shields.io/badge/License-MIT-yellow)](https://github.com/KOSASIH/pi-stablecoin-enforcer-app/blob/main/LICENSE)
+[![ILO Compliant](https://img.shields.io/badge/ILO-Certified%20Fair%20Labor-brightgreen)](https://github.com/KOSASIH/pi/pi-stablecoin-enforcer-app)
+[![Build Status](https://img.shields.io/badge/Build-Passing-success)](https://github.com/KOSASIH/pi/pi-stablecoin-enforcer-app/actions)
+[![License](https://img.shields.io/badge/License-MIT-yellow)](https://github.com/KOSASIH/pi/pi-stablecoin-enforcer-app/blob/main/LICENSE)
 
 ## Overview
 **Pi Coin Stablecoin Enforcer Super App** is the ultimate hyper-tech decentralized application (dApp) for enforcing Pi Coin as a stablecoin with fixed value $314,159 on the Stellar network. Powered by AI-driven neural networks, reinforcement learning (RL) for self-optimization, quantum-resistant security (SHA3), zero-trust oracles, and global compliance (IOSCO for non-security, ILO for fair labor). The app autonomously rejects Pi Coin from exchanges/external origins, enforces mining/rewards/P2P only, and provides real-time monitoring with compliance badges.
