@@ -1,0 +1,139 @@
+# Quantum Nexus AI .gitignore - Ultimate Hyper-Tech Exclusions
+# This file excludes sensitive, generated, or environment-specific files from Git tracking, ensuring security and cleanliness for the hyper-tech platform.
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Virtual Environments
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+.Python.env
+
+# IDEs and Editors
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS Generated Files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Logs
+*.log
+logs/
+log.txt
+quantum_nexus.log
+
+# Sensitive Files (Security First for Hyper-Tech)
+.env.local
+.env.production
+.env.staging
+config/secrets.yml
+private_key.pem
+*.key
+*.pem
+*.p12
+secrets/
+
+# AI/ML Models and Data (Large Files)
+models/
+*.pkl
+*.pth
+*.h5
+*.onnx
+data/
+datasets/
+checkpoints/
+
+# Blockchain
+node_modules/
+build/
+artifacts/
+cache/
+typechain/
+
+# IoT and Sensors
+sensor_data/
+mqtt_logs/
+
+# Testing
+.coverage
+htmlcov/
+.pytest_cache/
+.tox/
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+.hypothesis/
+
+# Docker
+.dockerignore
+docker-compose.override.yml
+
+# Kubernetes
+k8s/secrets/
+*.yaml.bak
+
+# CI/CD
+.github/workflows/*.log
+
+# Temporary Files
+tmp/
+temp/
+*.tmp
+*.bak
+
+# Documentation Builds
+docs/_build/
+docs/build/
+
+# Jupyter Notebooks (if used for demos)
+.ipynb_checkpoints
+
+# Database
+*.db
+*.sqlite
+*.sqlite3
+db_data/
+
+# Monitoring
+prometheus_data/
+grafana_data/
+
+# Custom Exclusions for Hyper-Tech
+quantum_sim_cache/
+swarm_memory/
+nft_assets/
