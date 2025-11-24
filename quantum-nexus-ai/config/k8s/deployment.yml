@@ -1,0 +1,213 @@
+# Quantum Nexus AI Kubernetes Deployment - Ultimate Hyper-Tech Orchestration
+# This manifest deploys the platform as microservices on Kubernetes, enabling auto-scaling, rolling updates, and high availability for quantum AI, blockchain, and IoT workloads.
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: quantum-nexus-api
+  namespace: quantum-nexus
+  labels:
+    app: quantum-nexus
+    component: api
+spec:
+  replicas: 3  # Auto-scale based on load
+  selector:
+    matchLabels:
+      app: quantum-nexus
+      component: api
+  template:
+    metadata:
+      labels:
+        app: quantum-nexus
+        component: api
+    spec:
+      containers:
+      - name: api
+        image: kosasih/quantum-nexus-api:latest
+        ports:
+        - containerPort: 8000
+          name: http
+        env:
+        - name: ENVIRONMENT
+          value: "production"
+        - name: PRIVATE_KEY
+          valueFrom:
+            secretKeyRef:
+              name: quantum-secrets
+              key: private-key
+        - name: JWT_SECRET
+          valueFrom:
+            secretKeyRef:
+              name: quantum-secrets
+              key: jwt-secret
+        resources:
+          requests:
+            memory: "512Mi"
+            cpu: "500m"
+          limits:
+            memory: "1Gi"
+            cpu: "1000m"
+        livenessProbe:
+          httpGet:
+            path: /health
+            port: 8000
+          initialDelaySeconds: 30
+          periodSeconds: 10
+        readinessProbe:
+          httpGet:
+            path: /health
+            port: 8000
+          initialDelaySeconds: 5
+          periodSeconds: 5
+        volumeMounts:
+        - name: models-volume
+          mountPath: /app/models
+      volumes:
+      - name: models-volume
+        persistentVolumeClaim:
+          claimName: models-pvc
+      serviceAccountName: quantum-service-account  # For RBAC
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: quantum-sim
+  namespace: quantum-nexus
+  labels:
+    app: quantum-nexus
+    component: quantum
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: quantum-nexus
+      component: quantum
+  template:
+    metadata:
+      labels:
+        app: quantum-nexus
+        component: quantum
+    spec:
+      containers:
+      - name: quantum-sim
+        image: kosasih/quantum-nexus-quantum:latest
+        env:
+        - name: NUM_QUBITS
+          value: "4"
+        resources:
+          requests:
+            memory: "2Gi"
+            cpu: "2000m"  # High CPU for quantum sims
+          limits:
+            memory: "4Gi"
+            cpu: "4000m"
+        volumeMounts:
+        - name: sim-cache
+          mountPath: /app/cache
+      volumes:
+      - name: sim-cache
+        emptyDir: {}  # Ephemeral for sim results
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: swarm-ai
+  namespace: quantum-nexus
+  labels:
+    app: quantum-nexus
+    component: swarm
+spec:
+  replicas: 5  # More replicas for distributed swarm
+  selector:
+    matchLabels:
+      app: quantum-nexus
+      component: swarm
+  template:
+    metadata:
+      labels:
+        app: quantum-nexus
+        component: swarm
+    spec:
+      containers:
+      - name: swarm-ai
+        image: kosasih/quantum-nexus-swarm:latest
+        env:
+        - name: NUM_AGENTS
+          value: "10"
+        resources:
+          requests:
+            memory: "1Gi"
+            cpu: "1000m"
+          limits:
+            memory: "2Gi"
+            cpu: "2000m"
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: quantum-nexus-api-service
+  namespace: quantum-nexus
+spec:
+  selector:
+    app: quantum-nexus
+    component: api
+  ports:
+  - port: 80
+    targetPort: 8000
+    protocol: TCP
+  type: LoadBalancer  # For external access; use ClusterIP for internal
+
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: models-pvc
+  namespace: quantum-nexus
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 10Gi  # For AI models
+
+---
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: api-hpa
+  namespace: quantum-nexus
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: quantum-nexus-api
+  minReplicas: 3
+  maxReplicas: 10
+  metrics:
+  - type: Resource
+    resource:
+      name: cpu
+      target:
+        type: Utilization
+        averageUtilization: 70
+  - type: Resource
+    resource:
+      name: memory
+      target:
+        type: Utilization
+        averageUtilization: 80
+
+---
+apiVersion: policy/v1
+kind: PodDisruptionBudget
+metadata:
+  name: quantum-pdb
+  namespace: quantum-nexus
+spec:
+  minAvailable: 1
+  selector:
+    matchLabels:
+      app: quantum-nexus
