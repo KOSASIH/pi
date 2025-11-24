@@ -1,0 +1,31 @@
+# Core AI & Quantum
+qiskit==0.44.1  # Quantum computing simulation
+qiskit-aer==0.12.2  # Quantum simulator
+tensorflow==2.13.0  # AI/ML framework
+torch==2.0.1  # PyTorch for advanced AI
+scikit-learn==1.3.0  # ML utilities
+
+# Blockchain
+web3==6.5.0  # Ethereum/Polygon integration
+eth-account==0.8.0  # Wallet management
+
+# API & Networking
+fastapi==0.104.1  # Hyper-speed API
+uvicorn==0.24.0  # ASGI server
+websockets==11.0.3  # Real-time WebSocket
+graphene==3.3  # GraphQL
+pydantic==2.4.2  # Data validation
+
+# IoT & Utils
+paho-mqtt==1.6.1  # MQTT for IoT
+cryptography==41.0.5  # Encryption (post-quantum ready)
+numpy==1.24.3  # Numerical computing
+pandas==2.1.1  # Data processing
+matplotlib==3.7.2  # Visualization
+three.js  # For AR/VR (via CDN in web apps)
+
+# Testing & Dev
+pytest==7.4.2  # Unit testing
+pytest-asyncio==0.21.1  # Async tests
+black==23.9.1  # Code formatting
+flake8==6.0.0  # Linting
