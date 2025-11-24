@@ -1,0 +1,138 @@
+# Quantum Nexus AI Docker Compose - Ultimate Hyper-Tech Multi-Service Orchestration
+# This file defines containerized services for the platform, enabling local development, testing, and production scaling with Docker Compose.
+
+version: '3.8'
+
+services:
+  # Main API Service
+  api:
+    build:
+      context: ../../  # Path to project root for Dockerfile
+      dockerfile: config/docker/Dockerfile.api
+    ports:
+      - "${API_PORT:-8000}:8000"  # From settings.yml
+    environment:
+      - ENVIRONMENT=${ENVIRONMENT:-development}
+      - PRIVATE_KEY=${PRIVATE_KEY}  # Secure key injection
+      - JWT_SECRET=${JWT_SECRET}
+    volumes:
+      - ../../models:/app/models  # Mount for AI models
+      - ../../config:/app/config  # Mount config files
+    depends_on:
+      - blockchain-sim  # Wait for sim if needed
+      - iot-sim
+    networks:
+      - quantum-nexus
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  # Quantum Simulation Service
+  quantum-sim:
+    build:
+      context: ../../
+      dockerfile: config/docker/Dockerfile.quantum
+    environment:
+      - NUM_QUBITS=4
+    volumes:
+      - ../../models:/app/models
+    networks:
+      - quantum-nexus
+    deploy:
+      resources:
+        limits:
+          memory: 2G
+          cpus: '2.0'  # For heavy quantum sims
+
+  # Swarm AI Service
+  swarm-ai:
+    build:
+      context: ../../
+      dockerfile: config/docker/Dockerfile.swarm
+    environment:
+      - NUM_AGENTS=10
+      - LEARNING_RATE=0.01
+    volumes:
+      - ../../models:/app/models
+    networks:
+      - quantum-nexus
+    depends_on:
+      - quantum-sim
+
+  # Blockchain Simulation Service (for dev/testing)
+  blockchain-sim:
+    image: trufflesuite/ganache-cli:latest  # Ethereum sim
+    ports:
+      - "8545:8545"
+    command: ["--deterministic", "--accounts", "10", "--defaultBalanceEther", "1000"]
+    networks:
+      - quantum-nexus
+
+  # IoT MQTT Broker Simulation
+  iot-sim:
+    image: eclipse-mosquitto:latest
+    ports:
+      - "1883:1883"
+      - "9001:9001"
+    volumes:
+      - ./mosquitto.conf:/mosquitto/config/mosquitto.conf  # Custom config for auth
+    networks:
+      - quantum-nexus
+
+  # Database Service (for extensions)
+  db:
+    image: postgres:13
+    environment:
+      - POSTGRES_DB=quantum_nexus
+      - POSTGRES_USER=quantum
+      - POSTGRES_PASSWORD=${DB_PASSWORD:-hypertech}
+    volumes:
+      - db_data:/var/lib/postgresql/data
+    networks:
+      - quantum-nexus
+    profiles:  # Optional for production
+      - prod
+
+  # Monitoring Service
+  monitoring:
+    image: prom/prometheus:latest
+    ports:
+      - "9090:9090"
+    volumes:
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml
+      - prometheus_data:/prometheus
+    networks:
+      - quantum-nexus
+    profiles:
+      - monitoring
+
+  # Grafana for Dashboards
+  grafana:
+    image: grafana/grafana:latest
+    ports:
+      - "3000:3000"
+    environment:
+      - GF_SECURITY_ADMIN_PASSWORD=${GRAFANA_PASSWORD:-admin}
+    volumes:
+      - grafana_data:/var/lib/grafana
+    depends_on:
+      - monitoring
+    networks:
+      - quantum-nexus
+    profiles:
+      - monitoring
+
+volumes:
+  db_data:
+  prometheus_data:
+  grafana_data:
+
+networks:
+  quantum-nexus:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.20.0.0/16  # Custom subnet for isolation
