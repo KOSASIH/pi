@@ -28,7 +28,7 @@ Quantum Nexus AI is an ultimate hyper-tech platform integrating quantum computin
 - **Core Integrator**: Unified orchestrator for seamless workflows across all modules.
 
 ## Installation
-1. Clone the repository: `git clone https://github.com/KOSASIH/pi.git && cd pi/quantum-nexus-ai`
+1. Clone the repository: `git clone https://github.com/KOSASIH/hyper-pi.git && cd pi/quantum-nexus-ai`
 2. Install dependencies: `pip install -r requirements.txt`
 3. (Optional) Set environment variables for blockchain: `export PRIVATE_KEY="your-private-key"`
 4. Run the core integrator: `python src/core/hyper_tech_core/core.py`
@@ -62,9 +62,9 @@ For Docker: `docker-compose up` (requires Docker Compose).
 
 ## Project Structure
 
-
-pi/quantum-nexus-ai/ ├── src/ │ ├── core/ │ │ ├── ai_engine/ (quantum_sim.py, swarm_intelligence.py) │ │ ├── blockchain/ (web3_interface.py) │ │ ├── iot_mesh/ (sensor_fusion.py) │ │ ├── quantum_optimizer/ (optimizer.py) │ │ ├── autonomous_control/ (autonomous.py) │ │ ├── nft_generator/ (generator.py) │ │ ├── visualization/ (ar_vr.py) │ │ ├── federated_learning/ (federated.py) │ │ └── hyper_tech_core/ (core.py) │ ├── api/ (fastapi_app.py) │ ├── cli/ (nexus_cli.py) │ └── utils/ (encryption.py, performance_monitor.py) ├── config/ (settings.yml, docker/, k8s/) ├── examples/ (quantum_prediction/demo.py, advanced_demo.py, tutorial.md) ├── tests/ (unit/, integration/) ├── docs/ (architecture.md, CHANGELOG.md) ├── .github/workflows/ (ci.yml) ├── requirements.txt ├── setup.py ├── LICENSE ├── .gitignore └── README.md
-
+```txt
+hyper-pi/quantum-nexus-ai/ ├── src/ │ ├── core/ │ │ ├── ai_engine/ (quantum_sim.py, swarm_intelligence.py) │ │ ├── blockchain/ (web3_interface.py) │ │ ├── iot_mesh/ (sensor_fusion.py) │ │ ├── quantum_optimizer/ (optimizer.py) │ │ ├── autonomous_control/ (autonomous.py) │ │ ├── nft_generator/ (generator.py) │ │ ├── visualization/ (ar_vr.py) │ │ ├── federated_learning/ (federated.py) │ │ └── hyper_tech_core/ (core.py) │ ├── api/ (fastapi_app.py) │ ├── cli/ (nexus_cli.py) │ └── utils/ (encryption.py, performance_monitor.py) ├── config/ (settings.yml, docker/, k8s/) ├── examples/ (quantum_prediction/demo.py, advanced_demo.py, tutorial.md) ├── tests/ (unit/, integration/) ├── docs/ (architecture.md, CHANGELOG.md) ├── .github/workflows/ (ci.yml) ├── requirements.txt ├── setup.py ├── LICENSE ├── .gitignore └── README.md
+```
 
 ## Contributing
 Fork the repo, create a branch, and submit a PR. Follow conventional commits. Run tests: `pytest`. See docs/architecture.md for details.
