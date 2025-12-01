@@ -8,7 +8,7 @@ setup(
     description="Ultimate hyper-tech platform integrating quantum AI, blockchain, and IoT.",
     long_description=open("README.md").read(),
     long_description_content_type="text/markdown",
-    url="https://github.com/KOSASIH/pi/tree/main/quantum-nexus-ai",
+    url="https://github.com/KOSASIH/hyper-pi/tree/main/quantum-nexus-ai",
     packages=find_packages(where="src"),
     package_dir={"": "src"},
     classifiers=[
