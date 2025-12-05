@@ -1,0 +1,16 @@
+[package]
+name = "hyper-pi"
+version = "2.0.0"
+edition = "2021"
+authors = ["KOSASIH <kosasih@example.com>"]
+description = "Ultimate hypervisor for Raspberry Pi with AI orchestration, GPU support, and secure networking."
+license = "MIT"
+
+[dependencies]
+tokio = { version = "1.0", features = ["full"] }  # Async runtime for high-performance tasks
+hyper = "0.14"  # HTTP server for web interface
+serde = { version = "1.0", features = ["derive"] }  # Serialization for config
+rpi-gpu = "0.1"  # Custom crate for Raspberry Pi GPU acceleration (assume available or mock)
+kvm-bindings = "0.6"  # KVM for virtualization
+openssl = "0.10"  # Secure networking
+tch = "0.10"  # PyTorch bindings for AI orchestration
