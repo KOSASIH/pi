@@ -1,9 +1,9 @@
 [package]
 name = "hyper-pi"
 version = "3.0.0"
-edition = "2021"
-authors = ["KOSASIH <kosasih@example.com>"]
-description = "Ultimate super app for Pi Ecosystem: Autonomous platform for building, managing, and running internal applications with Pi Coin stablecoin ($314,159 fixed value), AI-driven isolation from volatile tech, and Pi Network integration."
+edition = "2025"
+authors = ["KOSASIH <kosasihg88@gmail.com>"]
+description = "Ultimate super app for Pi Ecosystem: Autonomous platform for building, managing, and running internal applications with Pi Coin stablecoin ($314,159 fixed value), AI-driven isolation from volatile tech, Pi Network integration, and hyper-tech features like quantum simulation, telepathy, and consciousness uploading."
 license = "MIT"
 
 [dependencies]
@@ -15,3 +15,5 @@ kvm-bindings = "0.6"  # KVM for virtualization
 openssl = "0.10"  # Secure networking and encryption
 tch = "0.10"  # PyTorch bindings for AI orchestration and filtering
 rust-crypto = "0.2"  # AES encryption for secure data storage
+rand = "0.8"  # Random number generation for simulations (quantum, teleportation, etc.)
+chrono = { version = "0.4", features = ["serde"] }  # Timestamps for analytics and logging
