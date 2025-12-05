@@ -1,16 +1,17 @@
 [package]
 name = "hyper-pi"
-version = "2.0.0"
+version = "3.0.0"
 edition = "2021"
 authors = ["KOSASIH <kosasih@example.com>"]
-description = "Ultimate hypervisor for Raspberry Pi with AI orchestration, GPU support, and secure networking."
+description = "Ultimate super app for Pi Ecosystem: Autonomous platform for building, managing, and running internal applications with Pi Coin stablecoin ($314,159 fixed value), AI-driven isolation from volatile tech, and Pi Network integration."
 license = "MIT"
 
 [dependencies]
-tokio = { version = "1.0", features = ["full"] }  # Async runtime for high-performance tasks
+tokio = { version = "1.0", features = ["full", "net", "io-util"] }  # Async runtime with networking and I/O for Pi Network and storage
 hyper = "0.14"  # HTTP server for web interface
-serde = { version = "1.0", features = ["derive"] }  # Serialization for config
-rpi-gpu = "0.1"  # Custom crate for Raspberry Pi GPU acceleration (assume available or mock)
+serde = { version = "1.0", features = ["derive"] }  # Serialization for configs and contracts
+rpi-gpu = "0.1"  # Custom crate for Raspberry Pi GPU acceleration (mock if unavailable)
 kvm-bindings = "0.6"  # KVM for virtualization
-openssl = "0.10"  # Secure networking
-tch = "0.10"  # PyTorch bindings for AI orchestration
+openssl = "0.10"  # Secure networking and encryption
+tch = "0.10"  # PyTorch bindings for AI orchestration and filtering
+rust-crypto = "0.2"  # AES encryption for secure data storage
